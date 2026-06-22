@@ -3,176 +3,1024 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MV-VDP: Welcome</title>
-  <link rel="icon" href="./static/images/MV-VPD_logo.png">
-  <link rel="preload" as="image" href="static/images/Welcome.webp" fetchpriority="high">
-  <!-- Local Libraries and Stylesheets -->
-  <link href="static/css/OverlayScrollbars.min.css" rel="stylesheet">
-  <link href="static/css/all.min.css" rel="stylesheet">
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="static/css/styles.css">
-  <!-- Local Scripts -->
-  <script src="static/js/jquery.min.js" defer></script>
-  <script src="static/js/gsap.min.js" defer></script>
-  <script src="static/js/ScrollTrigger.min.js" defer></script>
-  <script src="static/js/scripts.js" defer></script>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="description" content="E-TTS: A New Embodied Test-Time Scaling Framework for Robotic Manipulation">
+  <title>E-TTS</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
   <style>
-    #paper, #download, #team, #explore, #stats {
-      display: none;
+    :root {
+      --page-bg: #fbfaff;
+      --surface: rgba(255, 255, 255, 0.94);
+      --surface-soft: rgba(248, 246, 255, 0.92);
+      --surface-border: rgba(118, 91, 184, 0.16);
+      --text-primary: #2f2b3f;
+      --text-secondary: #6d6682;
+      --heading-primary: #241b43;
+      --showcase-accent: #6f55b8;
+      --showcase-accent-alt: #b275d6;
+      --showcase-green: #6f55b8;
+      --showcase-shadow: 0 18px 40px rgba(68, 48, 120, 0.12);
+      --showcase-shadow-hover: 0 24px 54px rgba(68, 48, 120, 0.18);
     }
-    html, body {
-      overflow: hidden;
+
+    html {
+      scroll-behavior: smooth;
     }
+
+    body {
+      background: var(--page-bg);
+      color: var(--text-primary);
+    }
+
     body,
-    .header,
-    .logo,
-    .please-scroll,
-    .please-scroll-2,
-    #reminder {
-      color: #ffffff !important;
+    .content,
+    .content p,
+    .content li {
+      color: var(--text-primary);
     }
-    .welcome-gradient-text {
-      background: none !important;
-      -webkit-background-clip: initial !important;
-      background-clip: initial !important;
-      color: #ffffff !important;
-      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.18);
+
+    a:not(.button):not(.navbar-link):not(.navbar-item) {
+      color: #6b51b7;
+      transition: color 0.2s ease;
     }
-    .welcome-logo {
-      font-family: 'CustomFont', sans-serif;
-      font-size: 15vw;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+
+    a:not(.button):not(.navbar-link):not(.navbar-item):hover {
+      color: #9b63c7;
     }
-    .welcome-subtitle {
-      font-family: 'CustomFont', sans-serif;
-      font-size: 2vw;
-      font-weight: 700;
-      opacity: 1;
-      color: #ffffff !important;
-      background: none !important;
-      -webkit-background-clip: initial !important;
-      background-clip: initial !important;
+
+    .title,
+    .subtitle,
+    .mathvista_other,
+    .title.is-3,
+    .title.is-4 {
+      color: var(--heading-primary);
     }
-    .welcome-cta {
-      font-family: 'CustomFont', sans-serif;
-      font-size: 2.8em;
+
+    .section .title.is-3,
+    .section .title.is-4,
+    .hero.is-light .title.mathvista_other,
+    .hero.is-light .mathvista_other {
+      font-family: 'Montserrat', 'Google Sans', 'Noto Sans', sans-serif;
       font-weight: 800;
-      opacity: 1;
       letter-spacing: 0.01em;
-      color: #ffffff !important;
-      background: none !important;
-      -webkit-background-clip: initial !important;
-      background-clip: initial !important;
+      color: #5c489f;
+      text-shadow: 0 2px 12px rgba(111, 85, 184, 0.12);
     }
-    #reminder.welcome-subtitle,
-    #reminder.welcome-cta {
-      color: #ffffff !important;
+
+    .section .title.is-3:not(.publication-subtitle),
+    .section .title.is-4,
+    .hero.is-light .title.mathvista_other,
+    .hero.is-light .mathvista_other {
+      background: linear-gradient(135deg, #4b3b8f 0%, #a86bd1 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .welcome-glow {
+
+    .content strong,
+    .best {
+      color: #5d49a5;
+    }
+
+    .top-spotlight {
       position: relative;
-      display: inline-block;
-      isolation: isolate;
-      z-index: 0;
+      overflow: visible;
+      background:
+        radial-gradient(circle at 14% 20%, rgba(179, 151, 255, 0.22), transparent 26%),
+        radial-gradient(circle at 84% 18%, rgba(229, 207, 255, 0.2), transparent 25%),
+        radial-gradient(circle at 52% 84%, rgba(146, 112, 220, 0.16), transparent 33%),
+        linear-gradient(135deg, #20163e 0%, #352660 38%, #514081 70%, #755ba8 100%);
+      border-bottom: 1px solid rgba(219, 207, 255, 0.18);
+      box-shadow: inset 0 -18px 40px rgba(255, 255, 255, 0.05);
     }
-    .welcome-glow::before {
-      content: attr(data-text);
+
+    .top-spotlight::before,
+    .top-spotlight::after {
+      content: '';
       position: absolute;
-      inset: 0;
-      background: none;
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      color: rgba(255, 255, 255, 0.9);
-      filter: blur(6px);
-      opacity: 0.28;
-      z-index: 0;
+      border-radius: 999px;
       pointer-events: none;
+      filter: blur(4px);
     }
-    .welcome-glow > span,
-    .welcome-glow > strong,
-    .welcome-glow {
+
+    .top-spotlight::before {
+      width: 420px;
+      height: 420px;
+      top: -160px;
+      left: -90px;
+      background: radial-gradient(circle, rgba(189, 163, 255, 0.2) 0%, rgba(189, 163, 255, 0.05) 56%, transparent 74%);
+    }
+
+    .top-spotlight::after {
+      width: 360px;
+      height: 360px;
+      right: -80px;
+      top: 20px;
+      background: radial-gradient(circle, rgba(230, 210, 255, 0.18) 0%, rgba(230, 210, 255, 0.05) 58%, transparent 74%);
+    }
+
+    .top-spotlight > * {
       position: relative;
       z-index: 1;
     }
-    .welcome-logo.welcome-glow::before {
-      filter: blur(8px);
-      opacity: 0.38;
+
+    .top-spotlight .navbar {
+      background: transparent;
+      box-shadow: none;
+      position: relative;
+      z-index: 30;
     }
-    .welcome-cta.welcome-glow::before {
-      filter: blur(7px);
-      opacity: 0.42;
+
+    .top-spotlight .navbar-menu,
+    .top-spotlight .navbar-start {
+      background: transparent;
+      overflow: visible;
     }
-    .welcome-subtitle.welcome-glow::before,
-    .welcome-cta.welcome-glow::before {
-      background: none;
-      color: rgba(255, 255, 255, 0.82);
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      opacity: 0.18;
+
+    .top-spotlight .navbar-item,
+    .top-spotlight .navbar-item a {
+      color: #eaf4ff;
+      font-weight: 700;
     }
-    /* 替换背景图 */
-    #loading-screen,
-    #content {
-      background-image: url('static/images/Welcome.webp') !important;
-      background-repeat: no-repeat !important;
-      background-size: cover !important;
-      background-position: center center !important;
-      background-color: transparent !important;
+
+    .top-spotlight .navbar-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #eadfff;
     }
-    /* 预加载主页面的关键资源 */
-    .preload {
-      position: absolute;
-      width: 0;
-      height: 0;
+
+    .top-spotlight .hero-body {
+      padding-top: 3.4rem;
+      padding-bottom: 4.2rem;
+    }
+
+    .top-spotlight .publication-title,
+    .top-spotlight .publication-subtitle,
+    .top-spotlight .publication-subtitle strong,
+    .top-spotlight .publication-authors,
+    .top-spotlight .publication-authors .author-block,
+    .top-spotlight .publication-venue {
+      color: #f6fbff !important;
+    }
+
+    .top-spotlight .publication-title {
+      font-family: 'Montserrat', 'Google Sans', 'Noto Sans', sans-serif;
+      font-size: clamp(3.8rem, 10vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      text-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1.1rem;
+    }
+
+    .top-spotlight .publication-subtitle {
+      max-width: 980px;
+      margin: 0 auto 1.2rem;
+      line-height: 1.22;
+    }
+
+    .top-spotlight .publication-authors {
+      line-height: 1.7;
+      margin: 0.9rem auto 0;
+      max-width: 1050px;
+    }
+
+    .top-spotlight .publication-venue {
+      margin-top: 0.65rem;
+      opacity: 0.9;
+    }
+
+    .top-spotlight .publication-links {
+      margin-top: 1.35rem;
+    }
+
+    .top-spotlight .publication-links .button.is-dark {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      box-shadow: 0 14px 26px rgba(10, 14, 30, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+
+    .top-spotlight .publication-links .button.is-dark:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 18px 34px rgba(10, 14, 30, 0.24);
+    }
+
+    .top-spotlight .publication-links .button.is-dark .icon,
+    .top-spotlight .publication-links .button.is-dark span {
+      color: #ffffff !important;
+    }
+
+    .link-block {
+      display: inline-block;
+      margin: 0.25rem;
+    }
+
+    .tldr-box,
+    .content .box,
+    .table-showcase,
+    .stat-card,
+    .video-placeholder,
+    #BibTeX pre {
+      border-radius: 16px;
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      box-shadow: var(--showcase-shadow);
+      transform-origin: center center;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+    }
+
+    .tldr-box:hover,
+    .content .box:hover,
+    .table-showcase:hover,
+    .stat-card:hover,
+    .video-placeholder:hover,
+    #BibTeX pre:hover {
+      transform: translateY(-4px) scale(1.012);
+      box-shadow: var(--showcase-shadow-hover);
+    }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #ffffff 0%, #f3efff 100%);
+      border-left: 5px solid #6f55b8;
+      padding: 20px;
+    }
+
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #ffffff;
+    }
+
+    .caption {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      margin-top: 0.8rem;
+      text-align: center;
+    }
+
+    .stat-card {
+      height: 100%;
+      padding: 1.15rem 1.2rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(247, 244, 255, 0.95));
+    }
+
+    .stat-value {
+      display: block;
+      color: var(--showcase-green);
+      font-size: 2rem;
+      line-height: 1.05;
+      font-weight: 850;
+    }
+
+    .stat-label {
+      margin-top: 0.45rem;
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+
+    .method-card {
+      height: 100%;
+      padding: 1.2rem;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 246, 255, 0.92));
+      border: 1px solid var(--surface-border);
+    }
+
+    .method-card h4 {
+      color: #5c489f;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+
+    .benchmark-tags {
+      text-align: center;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .benchmark-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.25rem;
+      padding: 0.35rem 0.75rem;
+      margin: 0.25rem;
+      border-radius: 999px;
+      background: rgba(245, 241, 255, 0.98);
+      color: #5c489f;
+      border: 1px solid rgba(118, 91, 184, 0.22);
+      font-weight: 750;
+    }
+
+    .table-showcase {
+      padding: 1.25rem 1.35rem;
+      background: linear-gradient(180deg, rgba(250, 248, 255, 0.98), rgba(241, 237, 255, 0.94));
+      overflow: hidden;
+      margin: 1rem 0 1.6rem;
+    }
+
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 12px;
+    }
+
+    .paper-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      color: #2f2b3f;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
       overflow: hidden;
     }
-    .preload img {
-      width: 0;
-      height: 0;
+
+    .paper-table thead th {
+      background: linear-gradient(180deg, rgba(118, 91, 184, 0.18), rgba(178, 117, 214, 0.1));
+      color: #3a2f6f;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border-bottom: 1px solid rgba(95, 104, 184, 0.18);
+    }
+
+    .paper-table th,
+    .paper-table td {
+      padding: 0.78rem 0.75rem;
+      text-align: center;
+      vertical-align: middle;
+      border-bottom: 1px solid rgba(48, 57, 98, 0.08);
+      transition: background 0.24s ease, color 0.24s ease;
+    }
+
+    .paper-table th:first-child,
+    .paper-table td:first-child {
+      text-align: left;
+    }
+
+    .paper-table tbody tr:hover td {
+      background: rgba(118, 91, 184, 0.07);
+    }
+
+    .paper-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .paper-table .ours-row td {
+      background: linear-gradient(90deg, rgba(118, 91, 184, 0.14), rgba(178, 117, 214, 0.08));
+      font-weight: 700;
+      color: #3a2f6f;
+    }
+
+    .paper-table .best {
+      font-weight: 800;
+      color: #5d49a5;
+    }
+
+    .paper-table .avg-col {
+      font-weight: 800;
+      color: #5a438f;
+      white-space: nowrap;
+    }
+
+    .paper-table.compact {
+      min-width: 560px;
+    }
+
+    .paper-table.compact th,
+    .paper-table.compact td {
+      padding-top: 0.68rem;
+      padding-bottom: 0.68rem;
+    }
+
+    .video-placeholder {
+      min-height: 220px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-secondary);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(244, 240, 255, 0.94));
+      font-weight: 700;
+    }
+
+    .video-card {
+      height: 100%;
+      padding: 0.75rem;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 246, 255, 0.94));
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--showcase-shadow);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px) scale(1.012);
+      box-shadow: var(--showcase-shadow-hover);
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #111111;
+    }
+
+    .video-card .caption {
+      margin-top: 0.65rem;
+      font-weight: 700;
+    }
+
+    #BibTeX pre {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 241, 255, 0.94));
+      padding: 1.2rem;
+      overflow-x: auto;
+      color: #5a438f;
+      font-size: 0.92rem;
+    }
+
+    #BibTeX code {
+      font-family: Consolas, "Courier New", monospace;
+      color: #5a438f;
+    }
+
+    footer.footer {
+      background: #f5f2ff;
+      border-top: 1px solid var(--surface-border);
+    }
+
+    @media screen and (max-width: 768px) {
+      .top-spotlight .navbar-menu {
+        display: block;
+      }
+
+      .top-spotlight .navbar-start {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .top-spotlight .navbar-item {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.9rem;
+      }
+
+      .paper-table {
+        font-size: 0.82rem;
+      }
+
+      .paper-table th,
+      .paper-table td {
+        padding: 0.52rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .tldr-box,
+      .content .box,
+      .table-showcase,
+      .stat-card,
+      .video-placeholder,
+      #BibTeX pre {
+        transition: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- 预加载主页面的关键资源 -->
-  <div class="preload">
-    <img src="static/images/Logo.webp" alt="preload logo">
-    <img src="static/images/Overview.png" alt="preload teaser">
-  </div>
+<div class="top-spotlight">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu is-active">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="#abstract">Abstract</a>
+        <a class="navbar-item" href="#overview">Overview</a>
+        <a class="navbar-item" href="#method">Method</a>
+        <a class="navbar-item" href="#experiments">Experiments</a>
+        <a class="navbar-item" href="#realworld">Real-World</a>
+        <a class="navbar-item" href="#videos">Videos</a>
+        <a class="navbar-item" href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
 
-  <script>
-    // 预加载主页面
-    const preloadHomePage = () => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'document';
-      link.href = 'home_page.html';
-      document.head.appendChild(link);
-    };
-    
-    // 页面加载完成后预加载主页面
-    window.addEventListener('load', preloadHomePage);
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold">E-TTS</h1>
+            <h2 class="subtitle is-3 publication-subtitle">
+              <strong>A New Embodied Test-Time Scaling Framework for Robotic Manipulation</strong>
+            </h2>
 
-    // 点击事件处理
-    document.addEventListener('click', function() {
-        window.location.href = 'home_page.html'; 
-    });
-  </script>
+            <div class="is-size-5 publication-authors hero-author-list">
+              <span class="author-block">Wen Ye,<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>*</sup></span>
+              <span class="author-block">Peiyan Li,<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>*</sup></span>
+              <span class="author-block">Tingyu Yuan,<sup>2</sup><sup>,</sup><sup>3</sup></span>
+              <span class="author-block">Yuan Xu,<sup>1</sup><sup>,</sup><sup>2</sup></span>
+              <span class="author-block">Xiangnan Wu,<sup>1</sup><sup>,</sup><sup>2</sup></span>
+              <br>
+              <span class="author-block">Chaoyang Zhao,<sup>3</sup></span>
+              <span class="author-block">Jing Liu,<sup>4</sup></span>
+              <span class="author-block">Nianfeng Liu,<sup>4</sup></span>
+              <span class="author-block">Yan Huang,<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>4</sup><sup>†</sup></span>
+              <span class="author-block">Liang Wang<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>†</sup></span>
+            </div>
 
-  <div id="loading-screen"></div>
-  <div id="content">
-    <!-- Navbar Section -->
-    <header class="header">
-      <div class="header-top" style="top: 30%;">
-        <div class="logo welcome-logo welcome-gradient-text welcome-glow" data-text="MV-VDP">MV-VDP</div>
-        <div class="please-scroll-2" style="top: 220%; opacity: 1;">
-          <span id="reminder" class="welcome-subtitle welcome-glow" data-text="A 3D Spatio-Temporal-Aware Video Action Model">A 3D Spatio-Temporal-Aware Video Action Model</span>
+            <div class="is-size-5 publication-authors hero-author-notes">
+              <span class="author-block"><sup>*</sup>Equal Contribution,</span>
+              <span class="author-block"><sup>†</sup>Corresponding Author</span>
+            </div>
+
+            <div class="is-size-5 publication-authors hero-author-affiliations">
+              <span class="author-block"><sup>1</sup>New Laboratory of Pattern Recognition (NLPR), Institute of Automation, Chinese Academy of Sciences</span>
+              <br>
+              <span class="author-block"><sup>2</sup>School of Artificial Intelligence, University of Chinese Academy of Sciences</span>
+              <br>
+              <span class="author-block"><sup>3</sup>Foundation Model Research Center, Institute of Automation, Chinese Academy of Sciences</span>
+              <br>
+              <span class="author-block"><sup>4</sup>FiveAges</span>
+            </div>
+
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="javascript:void(0)" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="javascript:void(0)" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="javascript:void(0)" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><span class="hf-icon" aria-hidden="true">🤗</span></span>
+                  <span>HuggingFace</span>
+                </a>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="please-scroll" style="opacity: 1;">
-        <span id="reminder" class="welcome-cta welcome-glow" data-text="Please click to continue!">Please click to continue!</span>
+    </div>
+  </section>
+</div>
+
+<section class="section" id="abstract" style="padding-top: 1.4rem; padding-bottom: 1rem;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="tldr-box">
+          <h2 class="title is-4" style="color: #2c3e50; margin-bottom: 10px;">TL;DR:</h2>
+          <p class="is-size-5" style="color: #34495e; line-height: 1.6;">
+            E-TTS is a plug-and-play embodied test-time scaling framework that jointly scales reasoning and action with history-aware verification and closed-loop feedback, improving multiple VLA base models across multiple robotic benchmarks without retraining.
+          </p>
+        </div>
       </div>
-    </header>
-    <nav id="navigation-left"></nav>
+    </div>
   </div>
+</section>
+
+<section class="section" style="padding-top: 1.5rem;">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent test-time scaling methods for embodied tasks mainly scale actions, but robotic manipulation also depends on explicit reasoning and historical context. E-TTS addresses these two gaps through a modular embodied test-time scaling framework that unifies reasoning and action scaling for robotic manipulation.
+          </p>
+          <p>
+            E-TTS performs reasoning-action joint sampling and pairwise scoring, stores historical context in a history buffer for verification, and introduces feedback generation into the sampling process to form a closed-loop iterative refinement mechanism. Each component is composable, allowing E-TTS to be flexibly integrated with different VLA policies.
+          </p>
+          <p>
+            The framework is evaluated across 4 benchmarks, 6 environments, 3 embodiments, and 4 base VLA models. Without additional expert data collection or retraining, E-TTS consistently improves performance, with gains up to 33.31% in simulation and 31.25% in real-world experiments reported in the paper.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="overview" style="padding-top: 0;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <div class="box figure-card" style="margin-top: 0; margin-bottom: 1rem;">
+            <div class="content has-text-centered">
+              <img src="static/images/ETTS_Figure1.png?v=3" alt="Figure 1: Overview of E-TTS" width="100%" style="max-width: 1200px; height: auto;">
+              <p class="caption">
+                Figure 1: Overview. E-TTS integrates reasoning and action scaling through history-aware, closed-loop interactions with vision-language verifiers and is evaluated on SimplerEnv, LIBERO, LIBERO-Plus, VLABench, and real-world Franka tasks.
+              </p>
+            </div>
+          </div>
+
+          <div class="columns is-multiline" style="margin-top: 1rem;">
+            <div class="column is-one-quarter">
+              <div class="stat-card has-text-centered">
+                <span class="stat-value">4</span>
+                <div class="stat-label">Benchmarks</div>
+              </div>
+            </div>
+            <div class="column is-one-quarter">
+              <div class="stat-card has-text-centered">
+                <span class="stat-value">6</span>
+                <div class="stat-label">Environments</div>
+              </div>
+            </div>
+            <div class="column is-one-quarter">
+              <div class="stat-card has-text-centered">
+                <span class="stat-value">4</span>
+                <div class="stat-label">Base VLA Models</div>
+              </div>
+            </div>
+            <div class="column is-one-quarter">
+              <div class="stat-card has-text-centered">
+                <span class="stat-value">+33.31%</span>
+                <div class="stat-label">Max Simulation Gain</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small" id="method">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Method</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            E-TTS wraps around an existing VLA policy at inference time. At each decision step, the base policy generates multiple reasoning-action candidates. Separate verifiers evaluate the reasoning and action quality, and a joint score selects high-confidence candidates for execution.
+          </p>
+
+          <div class="box figure-card" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+            <div class="content has-text-centered">
+              <img src="static/images/ETTS_Figure2.png?v=2" alt="Figure 2: E-TTS framework" width="100%" style="max-width: 1200px; height: auto;">
+              <p class="caption">
+                Figure 2: Framework. E-TTS jointly samples reasoning and actions, verifies them with history-aware reasoning and action verifiers, and uses feedback-guided resampling when candidates are rejected.
+              </p>
+            </div>
+          </div>
+
+          <div class="columns is-multiline">
+            <div class="column is-one-third">
+              <div class="method-card">
+                <h4 class="title is-5">Joint Reasoning-Action Scaling</h4>
+                <p>Reasoning traces and low-level actions are sampled as coupled hypotheses, so test-time compute improves high-level planning and executable control together.</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="method-card">
+                <h4 class="title is-5">History-Aware Verification</h4>
+                <p>A history buffer stores recent observations, reasoning, and actions. The reasoning verifier uses this temporal context to evaluate consistency in long-horizon manipulation.</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="method-card">
+                <h4 class="title is-5">Feedback-Guided Refinement</h4>
+                <p>Rejected candidates trigger structured feedback, which is injected into the next sampling round to refine the policy's reasoning and action proposals.</p>
+              </div>
+            </div>
+          </div>
+
+          <p style="margin-top: 1.2rem;">
+            The method supports different intermediate reasoning types: multimodal reasoning from E-CoT, spatial reasoning from MolmoAct, and textual task-plan reasoning from pi0.5 and ER-1.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small" id="experiments">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Experiments</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
+          <p class="has-text-justified">
+            E-TTS is evaluated as a framework rather than as a single-model improvement. The experiments cover multiple benchmark families and base policies: E-CoT on SimplerEnv WidowX, MolmoAct on SimplerEnv Google Robot, LIBERO and LIBERO-Plus, pi0.5 on VLABench, ER-1 on SimplerEnv WidowX, and MolmoAct on real-world Franka tasks.
+          </p>
+
+          <div class="benchmark-tags">
+            <span class="benchmark-tag">SimplerEnv WidowX</span>
+            <span class="benchmark-tag">SimplerEnv Google Robot</span>
+            <span class="benchmark-tag">LIBERO</span>
+            <span class="benchmark-tag">LIBERO-Plus</span>
+            <span class="benchmark-tag">VLABench</span>
+            <span class="benchmark-tag">Real-World Franka</span>
+          </div>
+
+          <h2 class="title is-3 has-text-centered">SimplerEnv: E-CoT and MolmoAct</h2>
+          <p class="has-text-justified">
+            On SimplerEnv, E-TTS improves both a multimodal-reasoning policy and a spatial-reasoning policy. With E-CoT on WidowX, E-TTS raises the average success rate from 6.67% to 39.81%, outperforming naive TTS and RoboMonkey. With MolmoAct on Google Robot, it improves both visual matching and variant aggregation.
+          </p>
+
+          <div class="table-showcase">
+            <div class="table-scroll">
+              <table class="paper-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Spoon on Towel</th>
+                    <th>Eggplant in Basket</th>
+                    <th>Carrot on Plate</th>
+                    <th class="avg-col">Average</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>E-CoT</td><td>20.00</td><td>0.00</td><td>0.00</td><td class="avg-col">6.67</td></tr>
+                  <tr><td>E-CoT + naive TTS</td><td>41.67</td><td>4.17</td><td>25.00</td><td class="avg-col">23.61</td></tr>
+                  <tr><td>E-CoT + RoboMonkey</td><td>33.33</td><td>8.33</td><td>37.50</td><td class="avg-col">26.38</td></tr>
+                  <tr class="ours-row"><td>E-CoT + E-TTS</td><td class="best">58.33</td><td class="best">22.22</td><td class="best">38.89</td><td class="avg-col best">39.81</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">Table 1: SimplerEnv WidowX visual matching results with E-CoT.</p>
+          </div>
+
+          <div class="table-showcase">
+            <div class="table-scroll">
+              <table class="paper-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Method</th>
+                    <th colspan="4">Visual Matching</th>
+                    <th colspan="4">Variant Aggregation</th>
+                  </tr>
+                  <tr>
+                    <th>Pick Coke Can</th>
+                    <th>Move Near</th>
+                    <th>Open/Close Drawer</th>
+                    <th>Average</th>
+                    <th>Pick Coke Can</th>
+                    <th>Move Near</th>
+                    <th>Open/Close Drawer</th>
+                    <th>Average</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>MolmoAct</td><td>74.50</td><td>75.45</td><td>63.25</td><td>71.05</td><td>66.95</td><td>52.55</td><td>77.75</td><td>65.68</td></tr>
+                  <tr><td>MolmoAct + naive TTS</td><td>76.47</td><td>80.00</td><td>66.60</td><td>74.36</td><td>56.00</td><td>50.00</td><td>80.00</td><td>62.00</td></tr>
+                  <tr class="ours-row"><td>MolmoAct + E-TTS</td><td class="best">83.00</td><td class="best">85.00</td><td class="best">72.00</td><td class="best">80.00</td><td class="best">80.00</td><td class="best">70.00</td><td class="best">83.30</td><td class="best">77.77</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">Table 2: SimplerEnv Google Robot results with MolmoAct.</p>
+          </div>
+
+          <h2 class="title is-3 has-text-centered">LIBERO and LIBERO-Plus: MolmoAct</h2>
+          <p class="has-text-justified">
+            E-TTS also improves MolmoAct on Franka-based simulation benchmarks. LIBERO evaluates Spatial, Object, Goal, and Long-Horizon task suites, while LIBERO-Plus stresses robustness under viewpoint, object layout, robot initialization, instruction, lighting, texture, and sensor perturbations.
+          </p>
+
+          <div class="table-showcase">
+            <div class="table-scroll">
+              <table class="paper-table">
+                <thead>
+                  <tr>
+                    <th>Benchmark / Method</th>
+                    <th>Spatial</th>
+                    <th>Object</th>
+                    <th>Goal</th>
+                    <th>Long</th>
+                    <th class="avg-col">Average</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>LIBERO / MolmoAct</td><td>87.00</td><td>92.67</td><td>87.60</td><td>75.00</td><td class="avg-col">85.57</td></tr>
+                  <tr><td>LIBERO / MolmoAct + naive TTS</td><td>88.90</td><td>93.10</td><td>70.00</td><td>75.00</td><td class="avg-col">81.75</td></tr>
+                  <tr class="ours-row"><td>LIBERO / MolmoAct + E-TTS</td><td class="best">93.60</td><td class="best">97.50</td><td class="best">92.00</td><td class="best">80.00</td><td class="avg-col best">90.78</td></tr>
+                  <tr><td>LIBERO-Plus / MolmoAct</td><td>88.80</td><td>90.40</td><td>84.30</td><td>77.46</td><td class="avg-col">85.24</td></tr>
+                  <tr class="ours-row"><td>LIBERO-Plus / MolmoAct + E-TTS</td><td class="best">91.20</td><td class="best">91.36</td><td class="best">85.04</td><td class="best">80.99</td><td class="avg-col best">87.15</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">Table 3: LIBERO and LIBERO-Plus results. LIBERO-Plus average is computed from the four reported categories.</p>
+          </div>
+
+          <h2 class="title is-3 has-text-centered">Base VLA Models</h2>
+          <p class="has-text-justified">
+            E-TTS is evaluated with four base VLA models, covering multimodal, spatial, and textual reasoning styles.
+          </p>
+
+          <div class="columns is-multiline is-centered" style="margin-top: 1rem;">
+            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
+              <div class="method-card has-text-centered">
+                <h4 class="title is-5">E-CoT</h4>
+                <p>Multimodal chain-of-thought policy.</p>
+              </div>
+            </div>
+            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
+              <div class="method-card has-text-centered">
+                <h4 class="title is-5">MolmoAct</h4>
+                <p>Spatially grounded action reasoning.</p>
+              </div>
+            </div>
+            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
+              <div class="method-card has-text-centered">
+                <h4 class="title is-5">pi0.5</h4>
+                <p>Textual task-plan reasoning.</p>
+              </div>
+            </div>
+            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
+              <div class="method-card has-text-centered">
+                <h4 class="title is-5">ER-1</h4>
+                <p>Embodied textual reasoning traces.</p>
+              </div>
+            </div>
+          </div>
+          <p class="caption">E-TTS supports multiple base policies and reasoning modalities.</p>
+
+          <h2 class="title is-3 has-text-centered">Reasoning-Action Scaling Trade-off</h2>
+          <p class="has-text-justified">
+            The paper studies how to allocate a fixed test-time sampling budget between reasoning scaling and action scaling. Over-prioritizing either side is suboptimal, while an approximately balanced 1/1 proportion achieves the best success rate across the reported tasks.
+          </p>
+
+          <div class="box figure-card" style="margin-top: 1.5rem; margin-bottom: 1.6rem;">
+            <div class="content has-text-centered">
+              <img src="static/images/ETTS_Figure3_Proportions.png?v=2" alt="Figure 3: Success rate across different proportions" width="100%" style="max-width: 920px; height: auto;">
+              <p class="caption">
+                Figure 3: Success rate across different proportions. The 1/1 proportion achieves peak performance across all tasks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small" id="realworld">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Real-World Experiments</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
+        <p class="has-text-justified">
+            The real-robot evaluation uses a Franka Research 3 platform and evaluates E-TTS on four manipulation tasks with rigid and deformable objects. The visual setup and task-level results are shown below, followed by the expanded 160-trial real-world table.
+        </p>
+
+        <div class="box figure-card" style="margin-top: 1.5rem; margin-bottom: 1.6rem;">
+            <div class="content has-text-centered">
+              <img src="static/images/ETTS_Figure4_RealWorld.png?v=2" alt="Figure 4: Real-world robotic setup and results" width="100%" style="max-width: 1200px; height: auto;">
+              <p class="caption">
+                Figure 4: Real-robot experiments. The paper evaluates E-TTS with a Franka Research 3 setup across Lion, Bag, Sanitizer, and Drawer tasks, showing consistent gains over the MolmoAct Finetuned baseline.
+              </p>
+            </div>
+          </div>
+
+        <div class="table-showcase">
+            <div class="table-scroll">
+              <table class="paper-table compact">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Lion</th>
+                    <th>Bag</th>
+                    <th>Sanitizer</th>
+                    <th>Drawer</th>
+                    <th class="avg-col">Average</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>MolmoAct Finetuned</td><td>22.50</td><td>17.50</td><td>32.50</td><td>16.00</td><td class="avg-col">22.13</td></tr>
+                  <tr class="ours-row"><td>MolmoAct + E-TTS</td><td class="best">60.00</td><td class="best">42.50</td><td class="best">57.50</td><td class="best">35.00</td><td class="avg-col best">48.75</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">Rebuttal Table 1: Expanded real-world evaluation over 160 trials, improving average success from 22.13% to 48.75%.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small" id="videos">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Videos</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
+          <div class="columns is-multiline">
+            <div class="column is-one-third">
+              <div class="video-card">
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/rollouts/ecot_widowx_carrot_on_plate.mp4" type="video/mp4">
+                </video>
+                <p class="caption">E-CoT + E-TTS: Carrot on Plate. The first grasp fails, then E-TTS adjusts and succeeds.</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="video-card">
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/rollouts/molmoact_libero_bowl_between_plate_ramekin.mp4" type="video/mp4">
+                </video>
+                <p class="caption">MolmoAct + E-TTS: Bowl Between Objects</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="video-card">
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/rollouts/molmoact_libero_bowl_next_to_ramekin_plate.mp4" type="video/mp4">
+                </video>
+                <p class="caption">pi0.5 + E-TTS: Bowl Next to Objects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small" id="citation">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Citation</h1>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
+          <pre><code>@inproceedings{ye2026etts,
+  title={E-TTS: A New Embodied Test-Time Scaling Framework for Robotic Manipulation},
+  author={Ye, Wen and Li, Peiyan and Yuan, Tingyu and Xu, Yuan and Wu, Xiangnan and Zhao, Chaoyang and Liu, Jing and Liu, Nianfeng and Huang, Yan and Wang, Liang},
+  booktitle={ECCV},
+  year={2026}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <p style="text-align: center;">
+          E-TTS project page. Website style adapted from MV-VDP.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
