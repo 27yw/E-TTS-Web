@@ -572,12 +572,6 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <span class="link-block">
-                <a href="javascript:void(0)" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code (Coming Soon)</span>
-                </a>
-              </span>
             </div>
           </div>
         </div>
@@ -614,7 +608,7 @@
             E-TTS performs reasoning-action joint sampling and pairwise scoring, stores historical context in a history buffer for verification, and introduces feedback generation into the sampling process to form a closed-loop iterative refinement mechanism. Each component is composable, allowing E-TTS to be flexibly integrated with different VLA policies.
           </p>
           <p>
-            The framework is evaluated across 4 benchmarks, 6 environments, 3 embodiments, and 4 base VLA models. Without additional expert data collection or retraining, E-TTS consistently improves performance, with gains up to 33.31% in simulation and 31.25% in real-world experiments reported in the paper.
+            The framework is evaluated across 4 benchmarks, 6 environments, 3 embodiments, and 4 base VLA models. Without additional expert data collection or retraining, E-TTS consistently improves performance, with gains up to a 33.14% increase in simulation and 26.62% in real-world experiments.
           </p>
         </div>
       </div>
@@ -652,12 +646,12 @@
             <div class="column is-one-quarter">
               <div class="stat-card has-text-centered">
                 <span class="stat-value">4</span>
-                <div class="stat-label">Base VLA Models</div>
+                <div class="stat-label">Base Policies</div>
               </div>
             </div>
             <div class="column is-one-quarter">
               <div class="stat-card has-text-centered">
-                <span class="stat-value">+33.31%</span>
+                <span class="stat-value">+33.14%</span>
                 <div class="stat-label">Max Simulation Gain</div>
               </div>
             </div>
@@ -834,38 +828,43 @@
             <p class="caption">Table 3: LIBERO and LIBERO-Plus results. LIBERO-Plus average is computed from the four reported categories.</p>
           </div>
 
-          <h2 class="title is-3 has-text-centered">Base VLA Models</h2>
+          <h2 class="title is-3 has-text-centered">pi0.5 on VLABench</h2>
           <p class="has-text-justified">
-            E-TTS is evaluated with four base VLA models, covering multimodal, spatial, and textual reasoning styles.
+            E-TTS also integrates with pi0.5 on VLABench, a long-horizon benchmark with compositional tasks that require multi-step planning, world knowledge transfer, semantic instruction understanding, and physical-law awareness. E-TTS improves the average success rate across all listed tracks, with notable gains on tasks such as select_poker from 0.46 to 0.63 and add_condiment from 0.10 to 0.16.
           </p>
 
-          <div class="columns is-multiline is-centered" style="margin-top: 1rem;">
-            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
-              <div class="method-card has-text-centered">
-                <h4 class="title is-5">E-CoT</h4>
-                <p>Multimodal chain-of-thought policy.</p>
-              </div>
+          <div class="table-showcase">
+            <div class="table-scroll">
+              <table class="paper-table compact">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Track</th>
+                    <th>IF</th>
+                    <th>SB</th>
+                    <th>SCT</th>
+                    <th>SPo</th>
+                    <th>AC</th>
+                    <th>SD</th>
+                    <th class="avg-col">Avg.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>pi0.5</td><td>Track 1</td><td>0.18</td><td>0.48</td><td>0.48</td><td>0.46</td><td>0.50</td><td>0.42</td><td class="avg-col">0.39</td></tr>
+                  <tr class="ours-row"><td>pi0.5 + E-TTS</td><td>Track 1</td><td class="best">0.20</td><td class="best">0.53</td><td class="best">0.53</td><td class="best">0.63</td><td class="best">0.54</td><td class="best">0.48</td><td class="avg-col best">0.42</td></tr>
+                  <tr><td>pi0.5</td><td>Track 2</td><td>-</td><td>0.02</td><td>0.15</td><td>0.40</td><td>0.06</td><td>0.14</td><td class="avg-col">0.20</td></tr>
+                  <tr class="ours-row"><td>pi0.5 + E-TTS</td><td>Track 2</td><td>-</td><td>0.02</td><td class="best">0.16</td><td class="best">0.48</td><td class="best">0.08</td><td>0.14</td><td class="avg-col best">0.24</td></tr>
+                  <tr><td>pi0.5</td><td>Track 3</td><td>0.08</td><td class="best">0.38</td><td>0.50</td><td>-</td><td>0.14</td><td>0.14</td><td class="avg-col">0.19</td></tr>
+                  <tr class="ours-row"><td>pi0.5 + E-TTS</td><td>Track 3</td><td class="best">0.10</td><td>0.36</td><td class="best">0.54</td><td>-</td><td class="best">0.18</td><td class="best">0.16</td><td class="avg-col best">0.21</td></tr>
+                  <tr><td>pi0.5</td><td>Track 4</td><td>0.04</td><td>0.38</td><td>0.21</td><td>0.06</td><td>0.10</td><td>0.20</td><td class="avg-col">0.15</td></tr>
+                  <tr class="ours-row"><td>pi0.5 + E-TTS</td><td>Track 4</td><td class="best">0.06</td><td class="best">0.48</td><td class="best">0.24</td><td class="best">0.08</td><td class="best">0.16</td><td class="best">0.22</td><td class="avg-col best">0.16</td></tr>
+                  <tr><td>pi0.5</td><td>Track 6</td><td class="best">0.06</td><td>0.45</td><td>0.29</td><td>0.22</td><td class="best">0.46</td><td>0.30</td><td class="avg-col">0.25</td></tr>
+                  <tr class="ours-row"><td>pi0.5 + E-TTS</td><td>Track 6</td><td>0.04</td><td class="best">0.48</td><td class="best">0.31</td><td class="best">0.28</td><td>0.31</td><td class="best">0.34</td><td class="avg-col best">0.26</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
-              <div class="method-card has-text-centered">
-                <h4 class="title is-5">MolmoAct</h4>
-                <p>Spatially grounded action reasoning.</p>
-              </div>
-            </div>
-            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
-              <div class="method-card has-text-centered">
-                <h4 class="title is-5">pi0.5</h4>
-                <p>Textual task-plan reasoning.</p>
-              </div>
-            </div>
-            <div class="column is-one-fifth-desktop is-one-third-tablet is-half-mobile">
-              <div class="method-card has-text-centered">
-                <h4 class="title is-5">ER-1</h4>
-                <p>Embodied textual reasoning traces.</p>
-              </div>
-            </div>
+            <p class="caption">Table 4: VLABench success rates for representative tasks with pi0.5 and pi0.5 + E-TTS.</p>
           </div>
-          <p class="caption">E-TTS supports multiple base policies and reasoning modalities.</p>
 
           <h2 class="title is-3 has-text-centered">Reasoning-Action Scaling Trade-off</h2>
           <p class="has-text-justified">
